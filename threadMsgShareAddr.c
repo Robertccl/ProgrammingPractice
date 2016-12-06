@@ -43,9 +43,10 @@ int main()
     sem_mutex = sem_open(SEM_NAME3, O_CREAT, 0666, 1);
     sem_p = sem_open(SEM_NAME4, O_CREAT, 0666, 0);
     sem_q = sem_open(SEM_NAME5, O_CREAT, 0666, 0);
-    
+
+    pthread_create(&tid1, NULL, shmwrite, NULL);/*创建一个线程*/  
     pthread_create(&tid2, NULL, shmread, NULL);
-    pthread_create(&tid1, NULL, shmwrite, NULL);/*创建一个线程*/    
+      
  
     pthread_join(tid1, NULL);/*等待子线程执行完毕*/  
     pthread_join(tid2, NULL);
@@ -92,21 +93,17 @@ void shmwrite()
     shared = (struct shared_use_st*)shm;  
     while(running)//向共享内存中写数据  
     {  
-        
         //向共享内存中写入数据
         sem_wait(sem_empty);            // xinhaoliang p caozuo
         sem_wait(sem_mutex);            // xinhaoliang p caozuo  
         printf("Writer:");  
         fgets(buffer, BUFSIZ, stdin);  
         strncpy(shared->text, buffer, TEXT_SZ);  
-        //写完数据，设置written使共享内存段可读  
-       
         sem_post(sem_mutex);             //xinhaoliang  v  caozuo
         sem_post(sem_full);             //xinhaoliang  v  caozuo
-        sleep(1);
         sem_post(sem_p); //xinhaoliang  v  caozuo  
-        
-        //输入了end，退出循环（程序）  
+        //sleep(1);
+        //输入了exit，退出循环（程序）  
         if(strncmp(buffer, "exit", 4) == 0)  
         {
             sem_wait(sem_q);                // xinhaoliang p caozuo 
@@ -116,10 +113,11 @@ void shmwrite()
             //sleep(rand() % 3);
             sem_post(sem_mutex);             //xinhaoliang  v  caozuo
             sem_post(sem_empty);             //xinhaoliang  v  caozuo  
-            //读取完数据，设置written使共享内存段可写  
+             
             
             running=0;  
         }
+        sleep(1);
     }  
     //把共享内存从当前进程中分离  
     if(shmdt(shm) == -1)  
@@ -128,7 +126,7 @@ void shmwrite()
         exit(EXIT_FAILURE);  
     }
     shmctl(shmid, IPC_RMID, NULL); 
-    sleep(2);  
+    sleep(1);  
     exit(EXIT_SUCCESS);
 }
 
@@ -165,11 +163,9 @@ void shmread()
         sem_wait(sem_full);                // xinhaoliang p caozuo 
         sem_wait(sem_mutex);                // xinhaoliang p caozuo    
         printf("Reader: %s", shared->text);  
-        //sleep(rand() % 3);
-        
         sem_post(sem_mutex);             //xinhaoliang  v  caozuo
         sem_post(sem_empty);             //xinhaoliang  v  caozuo  
-        sleep(1);
+        
        
         //输入了exit，  
         if(strncmp(shared->text, "exit", 4) == 0)  
@@ -177,7 +173,7 @@ void shmread()
             sem_wait(sem_empty);            // xinhaoliang p caozuo
             sem_wait(sem_mutex);            // xinhaoliang p caozuo  
             strncpy(shared->text, "over", TEXT_SZ);  
-            //写完数据，设置written使共享内存段可读  
+           
             
             sem_post(sem_mutex);             //xinhaoliang  v  caozuo
             sem_post(sem_full);             //xinhaoliang  v  caozuo
@@ -189,15 +185,10 @@ void shmread()
             }  
             sem_post(sem_q); //xinhaoliang  v  caozuo 
             running=0;   
-        }
-        
-         
+        }      
         sleep(1);
     }  
-    
-    
     exit(EXIT_SUCCESS);
 }
-
 
 

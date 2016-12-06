@@ -61,11 +61,12 @@ void sender()
     char buffer[BUFSIZ];
     long int msg_to_receive = 10;
 
+
+    //key_t表示消息队列标志，用于获取同一消息队列；0666 表示用户的操作权限
     msgid = msgget((key_t)1234, 0666|IPC_CREAT);
     
     if(msgid==-1)
     {
-        //key_t表示消息队列标志，用于获取同一消息队列；0666 表示用户的操作权限
         fprintf(stderr,"msgget failed with errno: %d\n", errno);
         exit(EXIT_FAILURE);
     }
@@ -83,8 +84,7 @@ void sender()
         }
         
         strcpy(some_data.some_text, buffer);
-                   
-        
+                      
         if(msgsnd(msgid, (void *)&some_data, MAX_TEXT, 0)==-1)
         {
             fprintf(stderr, "msgsnd failed\n");        //stderr表示标准错误输出
@@ -95,7 +95,7 @@ void sender()
 
         sem_post(&sem_p); //xinhaoliang  v  caozuo
 
-        if(strncmp(buffer, "exit", 4) == 0)
+        if(strncmp(buffer, "end", 3) == 0)
         {
             sem_wait(&sem_q);            // xinhaoliang p caozuo 
             sem_post(&sem_mutex);             //xinhaoliang  v  caozuo
@@ -106,7 +106,7 @@ void sender()
                 fprintf(stderr, "msgrcv failed with errno: %d\n", errno);
                 exit(EXIT_FAILURE);
             }
-            printf("Sender: %s", some_data.some_text);
+            printf("Sender: %s\n", some_data.some_text);
             strcpy(buffer, some_data.some_text);  
             if(strncmp(buffer, "over", 4) == 0)
             {
@@ -119,14 +119,13 @@ void sender()
                 
                 exit(EXIT_SUCCESS);
             }
-            
+            sleep(1);
          }
         sleep(1); 
     }
 
     exit(EXIT_SUCCESS);
 }
-
 
 void reciver()
 {
@@ -159,7 +158,7 @@ void reciver()
         
         sem_post(&sem_mutex);             //xinhaoliang  v  caozuo
         sem_post(&sem_empty);             //xinhaoliang  v  caozuo
-        printf("Reciver: %s", some_data.some_text);
+        printf("Reciver: %s\n", some_data.some_text);
         if(strncmp(some_data.some_text, "end", 3)==0)
         {
             some_data.my_msg_type = 10;
@@ -180,9 +179,7 @@ void reciver()
             running = 0;
         }
     sleep(1);
-    }
-    
+    }   
 	exit(EXIT_SUCCESS);
 }
  
-
