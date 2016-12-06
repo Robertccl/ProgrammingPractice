@@ -98,14 +98,16 @@ void sender()
         if(strncmp(buffer, "end", 3) == 0)
         {
             sem_wait(&sem_q);            // xinhaoliang p caozuo 
-            sem_post(&sem_mutex);             //xinhaoliang  v  caozuo
-    	    sem_post(&sem_empty);             //xinhaoliang  v  caozuo
+            sem_wait(&sem_full);             //xinhaoliang  p  caozuo
+    	    sem_wait(&sem_mutex);             //xinhaoliang  p  caozuo
 
             if(msgrcv(msgid, (void *)&some_data, BUFSIZ, msg_to_receive, 0) == -1)
             {
                 fprintf(stderr, "msgrcv failed with errno: %d\n", errno);
                 exit(EXIT_FAILURE);
             }
+            sem_post(&sem_mutex);             //xinhaoliang  v  caozuo
+    	    sem_post(&sem_empty);             //xinhaoliang  v  caozuo
             printf("Sender: %s\n", some_data.some_text);
             strcpy(buffer, some_data.some_text);  
             if(strncmp(buffer, "over", 4) == 0)
