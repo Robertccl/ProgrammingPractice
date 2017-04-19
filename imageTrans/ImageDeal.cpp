@@ -52,17 +52,20 @@ bool ImageDeal::ReadImage(int index)
 	myUtil->int_str(index, imageName_des, HAVEFORMAT, nameLength);
 	myUtil->ChangeName(file_fullName_src, imageName_des, imageType_src);
 	myUtil->ChangePath(filePath, fullPath_src, file_fullName_src);
-	if (!myUtil->ReadImage(fullPath_src, m_SrcImg))
-		return false;
+//	if (!myUtil->ReadImage(fullPath_src, m_SrcImg))
+//		return false;
+	m_SrcImg = imread(fullPath_src);
 
 	//读标签数据
-	string tempPath = filePath;
-	string s;
-	myUtil->int_str(index, s, NOFORMAT, 0);
-	tempPath += "../data/" + s + ".txt";
-	myUtil->ReadText(textData_v, tempPath);
-
-	targetNum = ReadTextData();
+//	string tempPath = filePath;
+//	string s;
+//	myUtil->int_str(index, s, NOFORMAT, 0);
+//	tempPath += "../data/" + s + ".txt";
+//	myUtil->ReadText(textData_v, tempPath);
+//
+//	targetNum = ReadTextData();
+	if(m_SrcImg.data==NULL)
+		return false;
 
 	return true;
 }
@@ -76,15 +79,17 @@ void ImageDeal::TransImage(string transType)
 		{
 			DoRotate(m_SrcImg, m_ResImg, 60 * i);
 			//变换标签数据
-			VaryImageData();
-			DrawPoint("ROTATE");
+			//VaryImageData();
+			//DrawPoint("ROTATE");
 			imageList_des.push_back(m_ResImg);
 		}
 	}
 	else if (transType == "SHARPEN")
-	{ 
+	{
+		//imshow("ffsdf",m_SrcImg);
 		DoSharpen(m_SrcImg, m_ResImg);
-		DrawPoint("SHARPEN");
+		//imshow("ffsdf",m_ResImg);
+		//DrawPoint("SHARPEN");
 		//imageList_des.push_back(m_ResImg);
 	}
 		
@@ -94,9 +99,12 @@ void ImageDeal::TransImage(string transType)
 void ImageDeal::WriteToFile(string partPath_des, string transType, int index)
 {
 	string temp = imageName_des;
+
 	if (transType == "SHARPEN" && index == -1)
 	{
-		temp += "_s";
+		//temp += "_s";
+		temp[0]='7';
+		temp[1]='1';
 		fullPath_des = filePath + partPath_des + temp + "." + imageType_des;
 		imwrite(fullPath_des, m_ResImg);
 	}
@@ -104,8 +112,9 @@ void ImageDeal::WriteToFile(string partPath_des, string transType, int index)
 	{
 		string s;
 		myUtil->int_str(index, s, NOFORMAT, nameLength);
-		temp += "_r" + s;
-		fullPath_des = filePath + partPath_des + s + "/" + temp + "." + imageType_des;
+		temp[0]='8';
+		temp[1] = s[0];
+		fullPath_des = filePath + partPath_des + temp + "." + imageType_des;
 		imwrite(fullPath_des, imageList_des[index-1]);
 	}
 }
@@ -113,6 +122,7 @@ void ImageDeal::WriteToFile(string partPath_des, string transType, int index)
 
 void ImageDeal::DoSharpen(Mat& img, Mat& result)
 {
+
 	//创建一张空白图片
 	result.create(img.size(), img.type());
 	//处理边界内部的像素点, 图像最外围的像素点应该额外处理
@@ -335,20 +345,20 @@ void ImageDeal::run()
 	}*/
 
 	
-	for (int i = 2001; i < 2000+fileNumber+1; i++)
+	for (int i = 2501; i < 2500+fileNumber+1; i++)
 	{
 		//图片批处理锐化，旋转操作
 		ReadImage(i);
 		TransImage("SHARPEN");
 		if (m_ResImg.data)
-			WriteToFile("/../sharpen/", "SHARPEN", -1);
+			WriteToFile("../tanke/", "SHARPEN", -1);
 		TransImage("ROTATE");
 		if (imageList_des.size() > 0)
 		{
 			for (int j = 1; j < imageList_des.size() + 1; j++)
 			{
 
-				WriteToFile("/../rolate/", "ROTATE", j);
+				WriteToFile("../tanke/", "ROTATE", j);
 			}
 			imageList_des.clear();
 		}

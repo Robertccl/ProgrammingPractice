@@ -1,6 +1,9 @@
 #include <fstream>
 
 #include "util.h"
+#include <iomanip>
+#include <libxml2/libxml/parser.h>
+#include <libxml2/libxml/tree.h>
 
 MyUtil::MyUtil()
 {
@@ -131,4 +134,43 @@ void MyUtil::int_str(int &int_temp, string &string_temp, int type, int nameLengt
 		stream >> int_temp;
 
 	}
+
+    void MyUtil::AlterXML(double data[][4], string path)
+    {
+        xmlDocPtr doc;           //定义解析文档指针
+
+        xmlNodePtr curNode;      //定义结点指针(你需要它为了在各个结点间移动)
+
+                            //临时字符串变量
+        doc = xmlReadFile((char *)&path, "UTF-8", 256);
+        if (doc == NULL ) {
+            cout<<"open xml failed!"<<endl;
+            return;
+        }
+        curNode = xmlDocGetRootElement(doc);
+
+        if(curNode == NULL)
+        {
+            cout<<"xml is NULL"<<endl;
+
+            return;
+        }
+
+        curNode = curNode->xmlChildrenNode;
+        xmlNodePtr propNode = curNode;
+
+//        while (NULL != curNode)
+//        {
+//            if()
+//            {
+//
+//            }
+//
+//
+//        }
+
+
+
+
+    }
 }

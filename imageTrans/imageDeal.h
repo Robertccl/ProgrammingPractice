@@ -34,7 +34,7 @@ public:
 
 
 	//锐化处理
-	void DoSharpen(Mat& img, Mat& result);   
+	void DoSharpen(Mat& img, Mat& result);
 
 	//旋转变换处理,将图片旋转degree角度
 	void DoRotate(Mat& img, Mat& result, int degree);
@@ -74,8 +74,6 @@ private:
 	double varyData[6];                //变换图片特征点的数据
 	double imageData[200][13];          //变换前的图片特征点的数据
 	double imageData_vary[200][4];    //变换后的图片特征点的数据
-
-	
 
 };
 

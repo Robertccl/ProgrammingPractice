@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "imagedeal.h"
+#include "imageDeal.h"
 #include "util.h"
 
 #include <experimental/filesystem>
@@ -33,9 +33,11 @@ int main()
 
 	//getchar();
 
-	ImageDeal myImageDeal("D:/CAR/tanke_all/", "002001", "jpg", 15);
+	ImageDeal myImageDeal("/home/chen/Desktop/tanke_all/image/", "000001", "jpg", 248);
 
 	myImageDeal.run();
+
+
 	
 	return 0;
 }

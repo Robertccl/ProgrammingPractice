@@ -29,6 +29,8 @@ public:
 	//int ×ª»»³É string
 	void int_str(int &int_temp, string &string_temp, int type, int nameLength);
 
+    void AlterXML(double data[][4], string path);
+
 
 private:
 	const int haveFormat = 1;
