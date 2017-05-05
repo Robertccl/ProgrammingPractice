@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ds"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/chen/CLionProjects/ds/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/chen/CLionProjects/ds/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/chen/CLionProjects/ds/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ds">
+				<Option output="/home/chen/CLionProjects/ds/cmake-build-debug/ds" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/chen/CLionProjects/ds/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 ds"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ds/fast">
+				<Option output="/home/chen/CLionProjects/ds/cmake-build-debug/ds" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/chen/CLionProjects/ds/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 ds/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/chen/CLionProjects/ds/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/chen/CLionProjects/ds/MaxOperator.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/MaxOperator.h">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/list.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/list.h">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/main.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/oneSearchTree.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/stacktest.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/test.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/tree_ROOTofAVL.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/tree_isomorphism.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/tree_leaves.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/tree_searchTree_operate.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/tree_travelagain.cpp">
+			<Option target="ds"/>
+		</Unit>
+		<Unit filename="/home/chen/CLionProjects/ds/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
