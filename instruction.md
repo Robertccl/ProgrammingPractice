@@ -1,5 +1,8 @@
 #涉及简单重要知识说明
-###1.Linux提供两种信号量：
+
+
+
+###1 .Linux提供两种信号量：
 
   （1）内核信号量，由内核控制路径使用
 
@@ -7,9 +10,11 @@
 POSIX信号量又分为有名信号量和无名信号量。
 有名信号量，其值保存在文件中, 所以它可以用于线程也可以用于进程间的同步。
 无名信号量，其值保存在内存中。
-  参考网址：http://blog.csdn.net/qinxiongxu/article/details/7830537   http://www.ibm.com/developerworks/cn/linux/l-ipc/
+参考网址：http://blog.csdn.net/qinxiongxu/article/details/7830537
 
-###2.进程通信
+​                    http://www.ibm.com/developerworks/cn/linux/l-ipc/
+
+###2 .进程通信
 
 - 消息队列实现进程通信
 
