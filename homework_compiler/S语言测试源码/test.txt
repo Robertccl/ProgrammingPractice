@@ -1,0 +1,15 @@
+Const a = 1,b = 2, c = 3; 
+Var i,j,k;
+
+begin
+
+while b<10 do
+begin
+    j = i
+    i = i + a;
+end
+
+k=i+j+k;
+
+
+end

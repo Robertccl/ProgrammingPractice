@@ -1,0 +1,24 @@
+Const a = 2,b = 3;
+Var c,d,e;
+
+begin
+
+c=a*b*a*b;
+if a<b then
+begin
+c=a+b+a+b;
+d=c+1;
+end
+
+e=c+d;
+d=c+a;
+
+while a<b do
+begin
+d=2*(c+b)*3;
+c=a+2;
+end
+
+c=a+b;
+
+end
